@@ -21,7 +21,7 @@
             <p style="color:#666; max-width:800px; margin:0 auto;">Browse our standard cowling cap options below. Replace the image filenames with your actual product images and edit prices directly in the HTML.</p>
         </section>
 
-        <section class="product-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px;">
+    <section class="product-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px;">
             <!-- Product 1 -->
             <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
                 <h3>Yamaha Logo Cap</h3>
@@ -29,6 +29,7 @@
                 <img src="product.jpg" alt="Yamaha Logo Cap" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
                 <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$25.00</p>
                 <p style="color:#444; font-size:0.95rem;">Classic Yamaha logo cap, custom-fit for 2-stroke cowling.</p>
+                <button class="add-to-cart" data-id="cap1" data-name="Yamaha Logo Cap" data-price="25.00" style="margin-top:12px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
             </article>
 
             <!-- Product 2 -->
@@ -38,6 +39,7 @@
                 <img src="cap2.jpg" alt="Premium Vent Cap" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
                 <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$39.00</p>
                 <p style="color:#444; font-size:0.95rem;">Improved airflow and sleek styling for high-performance motors.</p>
+                <button class="add-to-cart" data-id="cap2" data-name="Premium Vent Cap" data-price="39.00" style="margin-top:12px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
             </article>
 
             <!-- Product 3 -->
@@ -47,8 +49,11 @@
                 <img src="cap3.jpg" alt="Custom Fit Cap" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
                 <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$49.00</p>
                 <p style="color:#444; font-size:0.95rem;">Tailored caps for exact cowling dimensions — perfect for custom builds.</p>
+                <button class="add-to-cart" data-id="cap3" data-name="Custom Fit Cap" data-price="49.00" style="margin-top:12px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
             </article>
         </section>
     </main>
+    <script src="cart.js"></script>
+<script src="cart-paypal.js"></script>
 </body>
 </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Your Cart - Backcreek Designs</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header style="text-align:center; padding: 24px 0; font-size:2rem; font-weight:bold; background:#f8f9fa; color:#333;">Backcreek Designs - Cart</header>
+    <main style="max-width:900px; margin:40px auto; padding:0 20px;">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div id="cart-total" style="margin-top:20px; font-weight:bold;"></div>
+        <form id="checkout-form" style="margin-top:20px; display:flex; flex-wrap:wrap; gap:18px 32px; align-items:center; max-width:700px;">
+            <div style="flex:1 1 220px; display:flex; flex-direction:column; font-size:0.95rem;">
+                <label for="buyer-name">Full Name</label>
+                <input id="buyer-name" type="text" placeholder="Your name" style="padding:8px 10px; margin-top:6px; border:1px solid #ddd; border-radius:6px;">
+            </div>
+            <div style="flex:1 1 220px; display:flex; flex-direction:column; font-size:0.95rem;">
+                <label for="buyer-email">Email</label>
+                <input id="buyer-email" type="email" placeholder="you@example.com" style="padding:8px 10px; margin-top:6px; border:1px solid #ddd; border-radius:6px;">
+            </div>
+            <div style="flex:1 1 220px; display:flex; flex-direction:column; font-size:0.95rem;">
+                <label for="buyer-phone">Phone</label>
+                <input id="buyer-phone" type="tel" placeholder="(555) 123-4567" style="padding:8px 10px; margin-top:6px; border:1px solid #ddd; border-radius:6px;">
+            </div>
+            <div style="flex:2 1 320px; display:flex; flex-direction:column; font-size:0.95rem;">
+                <label for="buyer-address">Shipping Address</label>
+                <textarea id="buyer-address" rows="2" placeholder="Street, City, State, ZIP" style="padding:8px 10px; margin-top:6px; border:1px solid #ddd; border-radius:6px;"></textarea>
+            </div>
+            <div style="flex:1 1 220px; display:flex; flex-direction:column; font-size:0.95rem;">
+                <label for="shipping-cost">Shipping Cost (USD)</label>
+                <div style="display:flex; gap:8px; align-items:center;">
+                  <input id="shipping-cost" type="number" min="0" step="0.01" value="0.00" style="padding:8px 10px; border:1px solid #ddd; border-radius:6px;">
+                  <button id="calc-shipping" type="button" style="padding:8px 14px; background:#2196F3; color:white; border:none; border-radius:6px; cursor:pointer;">Calculate Shipping</button>
+                </div>
+            </div>
+            <div style="flex:1 1 100%; display:flex; flex-direction:row; justify-content:flex-start; gap:12px; flex-wrap:wrap;">
+                <button id="cashapp-checkout" type="button" style="padding:12px 20px; background:#00D632; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:bold;">Pay with Cash App</button>
+                <button id="paypal-checkout" type="button" style="padding:12px 20px; background:#003087; color:white; border:none; border-radius:6px; cursor:pointer;">Pay with PayPal</button>
+            </div>
+        </form>
+    </main>
+    <script src="cart.js"></script>
+    <script src="cart-paypal.js"></script>
+</body>
+</html>

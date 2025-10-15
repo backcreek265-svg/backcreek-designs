@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 # Replace the URL below with your actual site domain after deployment
-Sitemap: https://backcreek-designs.com/sitemap.xml
+Sitemap: https://backcreek-designs.store/sitemap.xml
