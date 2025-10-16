@@ -8,7 +8,7 @@ const MERCHANT_EMAIL = 'backcreek265@gmail.com'; // your email for order notific
 const FORM_ENDPOINT = ''; // e.g. 'https://formspree.io/f/xxxxx'
 
 function formatOrderSummary(cart){
-  return cart.map(i => `${i.qty} x ${i.name} @ $${i.price.toFixed(2)} = $${(i.qty*i.price).toFixed(2)}`).join('\n');
+  return cart.map(i => `${i.qty} x ${i.name}${i.note ? ` (Note: ${i.note})` : ''} @ $${i.price.toFixed(2)} = $${(i.qty*i.price).toFixed(2)}`).join('\n');
 }
 
 function sendOrderByFormspree(customerInfo, cart, total, paymentMethod){
@@ -192,7 +192,7 @@ function paypalCheckout(){
 
     cart.forEach((item, idx)=>{
       const i = idx + 1;
-      form.appendChild(Object.assign(document.createElement('input'), {type:'hidden', name:'item_name_' + i, value:item.name}));
+      form.appendChild(Object.assign(document.createElement('input'), {type:'hidden', name:'item_name_' + i, value:item.name + (item.note ? ` - Note: ${item.note}` : '')}));
       form.appendChild(Object.assign(document.createElement('input'), {type:'hidden', name:'amount_' + i, value:item.price.toFixed(2)}));
       form.appendChild(Object.assign(document.createElement('input'), {type:'hidden', name:'quantity_' + i, value:item.qty}));
     });

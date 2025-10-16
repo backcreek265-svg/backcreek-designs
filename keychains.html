@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Chains - Backcreek Designs</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header style="text-align:center; padding: 24px 0; font-size:2rem; font-weight:bold; background:#f8f9fa; color:#333;">
+        Backcreek Designs
+    </header>
+    <nav class="navbar" style="background:#333; padding:12px 20px; display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex; gap:20px;">
+            <a href="home.html" style="color:white; text-decoration:none; padding:8px 12px;">Home</a>
+            <a href="about.html" style="color:white; text-decoration:none; padding:8px 12px;">About</a>
+            <a href="services.html" style="color:white; text-decoration:none; padding:8px 12px;">Services</a>
+            <a href="contact.html" style="color:white; text-decoration:none; padding:8px 12px;">Contact</a>
+        </div>
+        <div>
+            <a href="cart.html" style="color:white; text-decoration:none; padding:8px 12px; display:flex; align-items:center; gap:8px;">
+                <span>🛒 Cart</span>
+                <span id="cart-badge" style="background:#e74c3c; color:white; padding:2px 8px; border-radius:12px; font-size:0.85rem;">0</span>
+            </a>
+        </div>
+    </nav>
+    <div style="text-align:left; padding:10px 20px; background:#f8f9fa; border-bottom:1px solid #eee;">
+        <a href="home.html" style="display:inline-flex; align-items:center; text-decoration:none; color:#4CAF50; font-weight:bold; padding:8px 16px; background:white; border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+            <span style="margin-right:8px;">←</span> Back
+        </a>
+    </div>
+    <main style="max-width:1100px; margin:20px auto; padding:0 20px;">
+        <section style="margin-bottom:24px; text-align:center;">
+            <h1 style="margin-bottom:8px;">Key Chains</h1>
+            <p style="color:#666; max-width:800px; margin:0 auto;">Shop our selection of custom and premium key chains for marine enthusiasts.</p>
+        </section>
+
+        <section class="product-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px;">
+            <!-- Product 1 -->
+            <article id="backcreek" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Backcreek Key Chain</h3>
+                <img src="backcreekplainkeychain.png.png" alt="Backcreek Key Chain" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$9.00</p>
+                <p style="color:#444; font-size:0.95rem;">Classic Backcreek keychain — hollow and buoyant so it floats if dropped in the water.</p>
+                <div style="display:flex; gap:10px; justify-content:center;">
+                    <a href="product-backcreek-keychain.html" style="padding:8px 12px; border:1px solid #4CAF50; color:#4CAF50; border-radius:6px; text-decoration:none;">View details</a>
+                    <button class="add-to-cart" data-id="keychain1" data-name="Backcreek Key Chain" data-price="9.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+                </div>
+            </article>
+
+            <!-- Product 2 -->
+            <article id="custom" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Custom Key Chain</h3>
+                <img src="squareyamahakeychain.png.png" alt="Custom Key Chain" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$12.00</p>
+                <p style="color:#444; font-size:0.95rem;">this is the custom key chain you can customize it to say whatever you want.</p>
+                <div style="margin:10px 0; text-align:left;">
+                    <label for="custom-note" style="display:block; font-size:0.9rem; color:#333; margin-bottom:6px;">Add your customization notes (name, color, logo link, etc.)</label>
+                    <textarea id="custom-note" class="item-note" rows="2" placeholder="e.g., Name: WESTI in white; include small anchor icon" style="width:100%; padding:8px 10px; border:1px solid #ddd; border-radius:6px;"></textarea>
+                </div>
+                <div style="display:flex; gap:10px; justify-content:center; align-items:center;">
+                    <a href="product-custom-keychain.html" style="padding:8px 12px; border:1px solid #4CAF50; color:#4CAF50; border-radius:6px; text-decoration:none;">View details</a>
+                    <button class="add-to-cart" data-id="keychain2" data-name="Custom Key Chain" data-price="12.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+                </div>
+            </article>
+
+            <!-- Product 3 -->
+            <article id="premium" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Premium Key Chain</h3>
+                <img src="image/premium-keychain.svg" alt="Premium Key Chain" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$18.00</p>
+                <p style="color:#444; font-size:0.95rem;">Premium materials and finish for a luxury feel.</p>
+                <div style="display:flex; gap:10px; justify-content:center;">
+                    <a href="product-premium-keychain.html" style="padding:8px 12px; border:1px solid #4CAF50; color:#4CAF50; border-radius:6px; text-decoration:none;">View details</a>
+                    <button class="add-to-cart" data-id="keychain3" data-name="Premium Key Chain" data-price="18.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+                </div>
+            </article>
+
+            <!-- Product 4 -->
+            <article id="yamaha" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Yamaha Key Chain</h3>
+                <img src="image/yamaha-keychain.svg" alt="Yamaha Key Chain" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$14.00</p>
+                <p style="color:#444; font-size:0.95rem;">Official Yamaha branded keychain with marine-grade construction.</p>
+                <button class="add-to-cart" data-id="keychain4" data-name="Yamaha Key Chain" data-price="14.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+            </article>
+
+            <!-- Product 5 -->
+            <article id="leather" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Leather Key Chain</h3>
+                <img src="image/leather-keychain.svg" alt="Leather Key Chain" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$16.00</p>
+                <p style="color:#444; font-size:0.95rem;">Premium leather with custom engraving option for boat names.</p>
+                <button class="add-to-cart" data-id="keychain5" data-name="Leather Key Chain" data-price="16.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+            </article>
+
+            <!-- Product 6 -->
+            <article id="anchor" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Anchor Key Chain</h3>
+                <img src="image/anchor-keychain.svg" alt="Anchor Key Chain" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$11.00</p>
+                <p style="color:#444; font-size:0.95rem;">Classic nautical anchor design — perfect for the maritime enthusiast.</p>
+                <button class="add-to-cart" data-id="keychain6" data-name="Anchor Key Chain" data-price="11.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+            </article>
+
+            <!-- Product 7 -->
+            <article id="metal" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Stainless Steel Key Chain</h3>
+                <img src="image/metal-keychain.svg" alt="Stainless Steel Key Chain" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$20.00</p>
+                <p style="color:#444; font-size:0.95rem;">Marine-grade stainless steel — corrosion resistant and ultra-durable.</p>
+                <button class="add-to-cart" data-id="keychain7" data-name="Stainless Steel Key Chain" data-price="20.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+            </article>
+
+            <!-- Product 8 -->
+            <article id="rope" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Rope Key Chain</h3>
+                <img src="image/rope-keychain.svg" alt="Rope Key Chain" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$13.00</p>
+                <p style="color:#444; font-size:0.95rem;">Hand-braided nautical rope with gold accents — true sailor style.</p>
+                <button class="add-to-cart" data-id="keychain8" data-name="Rope Key Chain" data-price="13.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+            </article>
+
+            <!-- Product 9 -->
+            <article id="wood" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Wood Grain Key Chain</h3>
+                <img src="image/wood-keychain.svg" alt="Wood Grain Key Chain" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$15.00</p>
+                <p style="color:#444; font-size:0.95rem;">Natural bamboo with laser engraving capability — eco-friendly choice.</p>
+                <button class="add-to-cart" data-id="keychain9" data-name="Wood Grain Key Chain" data-price="15.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+            </article>
+        </section>
+    </main>
+    <script src="cart.js"></script>
+    <script src="cart-paypal.js"></script>
+</body>
+</html>
