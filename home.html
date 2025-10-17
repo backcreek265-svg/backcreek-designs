@@ -81,13 +81,41 @@
                 <a href="keychains.html#premium">Premium Key Chain</a>
                 <a href="cases.html">Cases</a>
             </div>
-        </div>
-        <div style="margin-left:auto; padding-right:12px; display:flex; align-items:center;">
-            <a href="cart.html" style="color:white; text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
+    </div>
+        <div class="navbar-cart">
+            <a href="cart.html">
                 <i class="fas fa-shopping-cart"></i>
-                <span id="cart-badge" style="background:#e74c3c; color:white; padding:2px 8px; border-radius:12px; font-size:0.85rem;">0</span>
+                <span id="cart-badge">0</span>
             </a>
         </div>
-    </nav>
+        </nav>
+
+        <!-- NEW ARRIVALS SECTION: To update, edit the product cards below -->
+        <section class="new-arrivals">
+            <h2>🆕 New Arrivals</h2>
+            <div class="arrivals-list">
+                <!-- Example product card: copy/paste to add more -->
+                <div class="product-card highlight">
+                    <img src="product.jpg" alt="Yamaha Cap" style="width:120px; height:120px; object-fit:cover; border-radius:10px; border:2px solid #4CAF50;">
+                    <div style="margin-top:10px; font-weight:bold; font-size:1.1rem;">Yamaha logo cap</div>
+                    <div style="color:#4CAF50; font-weight:bold;">$25.00</div>
+                    <button class="add-to-cart" data-id="premium1" data-name="Yamaha Cap" data-price="25">Add to cart</button>
+                </div>
+                <div class="product-card highlight">
+                    <img src="image/phone-case.svg" alt="Waterproof Phone Case" style="width:120px; height:120px; object-fit:cover; border-radius:10px; border:2px solid #4CAF50;">
+                    <div style="margin-top:10px; font-weight:bold; font-size:1.1rem;">Yeti bag holder</div>
+                    <div style="color:#4CAF50; font-weight:bold;">$15.00</div>
+                    <button class="add-to-cart" data-id="yeti-holder" data-name="Yeti bag holder" data-price="15">Add to cart</button>
+                </div>
+                <div class="product-card highlight">
+                    <img src="image/phone-case.svg" alt="Waterproof Phone Case" style="width:120px; height:120px; object-fit:cover; border-radius:10px; border:2px solid #4CAF50;">
+                    <div style="margin-top:10px; font-weight:bold; font-size:1.1rem;">drain plug holder</div>
+                    <div style="color:#4CAF50; font-weight:bold;">$22.00</div>
+                    <button class="add-to-cart" data-id="drain-holder" data-name="drain plug holder" data-price="22">Add to cart</button>
+                </div>
+                <!-- Add more new arrivals here -->
+            </div>
+        </section>
+    <script src="cart.js"></script>
 </body>
 </html>
