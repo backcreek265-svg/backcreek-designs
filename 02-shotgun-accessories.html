@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Shotgun Accessories - Backcreek Designs</title>
+    <link rel="stylesheet" href="css-01-home.css">
+    <!-- Three.js for 3D STL Viewer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FontLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/TextGeometry.js"></script>
+</head>
+<body>
+    <header style="text-align:center; padding: 24px 0; font-size:2rem; font-weight:bold; background:#f8f9fa; color:#333;">
+        Backcreek Designs
+    </header>
+    <nav class="navbar" style="background:#333; padding:12px 20px; display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex; gap:20px;">
+            <a href="01-home.html" style="color:white; text-decoration:none; padding:8px 12px;">Home</a>
+            <a href="01-about.html" style="color:white; text-decoration:none; padding:8px 12px;">About</a>
+            <a href="01-services.html" style="color:white; text-decoration:none; padding:8px 12px;">Services</a>
+            <a href="01-contact.html" style="color:white; text-decoration:none; padding:8px 12px;">Contact</a>
+        </div>
+        <div>
+            <a href="04-cart.html" style="color:white; text-decoration:none; padding:8px 12px; display:flex; align-items:center; gap:8px;">
+                <span>🛒 Cart</span>
+                <span id="cart-badge" style="background:#e74c3c; color:white; padding:2px 8px; border-radius:12px; font-size:0.85rem;">0</span>
+            </a>
+        </div>
+    </nav>
+    <div style="text-align:left; padding:10px 20px; background:#f8f9fa; border-bottom:1px solid #eee;">
+        <a href="01-home.html" style="display:inline-flex; align-items:center; text-decoration:none; color:#4CAF50; font-weight:bold; padding:8px 16px; background:white; border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+            <span style="margin-right:8px;">←</span> Back
+        </a>
+    </div>
+    <main style="max-width:1100px; margin:20px auto; padding:0 20px;">
+        <section style="margin-bottom:24px; text-align:center;">
+            <h1 style="margin-bottom:8px;">All Marine Shell Accessories</h1>
+            <p style="color:#666; max-width:800px; margin:0 auto;">Complete selection of 3D-printed shell holders and dispensers for your boat. Marine-grade and built for life on the water.</p>
+        </section>
+
+        <!-- Shell Holders Section -->
+        <section style="margin-bottom:32px;">
+            <h2 style="text-align:center; margin-bottom:20px; color:#333; font-size:1.8rem;">Marine Shell Holders</h2>
+            <section class="product-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px;">
+                <!-- Product 1 -->
+                <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                    <h3>6-Shell Console Mount</h3>
+                    <img src="image/shell-holder-6.svg" alt="6-Shell Console Mount" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                    <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$15.00</p>
+                    <p style="color:#444; font-size:0.95rem;">Compact 6-shell holder that clips to your belt or bag. Perfect for quick access.</p>
+                    
+                    <div style="margin:12px 0; text-align:left;">
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block;">Holder Color:</label>
+                        <select class="holder-color-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:8px;">
+                            <option value="black">Black</option>
+                            <option value="od-green">OD Green</option>
+                            <option value="tan">Tan</option>
+                            <option value="gray">Gray</option>
+                            <option value="camo">Camo Pattern</option>
+                            <option value="out-of-stock" disabled style="color:#999;">Out of Stock</option>
+                        </select>
+                        
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block; margin-top:12px;">Filament Type:</label>
+                        <select class="filament-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:16px;">
+                            <option value="pla+">PLA+ (Standard)</option>
+                            <option value="petg">PETG (Recommended)</option>
+                            <option value="abs">ABS (+$3.00)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="add-to-cart" data-id="holder1" data-name="6-Shell Console Mount" data-price="15.00" style="margin-top:8px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer; width:100%;">Add to cart</button>
+                </article>
+
+                <!-- Product 2 -->
+                <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                    <h3>12-Shell Gunwale Mount</h3>
+                    <img src="image/shell-holder-12.svg" alt="12-Shell Gunwale Mount" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                    <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$22.00</p>
+                    <p style="color:#444; font-size:0.95rem;">Double-row 12-shell holder for extended shooting sessions. Belt mountable.</p>
+                    
+                    <div style="margin:12px 0; text-align:left;">
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block;">Holder Color:</label>
+                        <select class="holder-color-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:8px;">
+                            <option value="black">Black</option>
+                            <option value="od-green">OD Green</option>
+                            <option value="tan">Tan</option>
+                            <option value="gray">Gray</option>
+                            <option value="camo">Camo Pattern</option>
+                            <option value="out-of-stock" disabled style="color:#999;">Out of Stock</option>
+                        </select>
+                        
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block; margin-top:12px;">Filament Type:</label>
+                        <select class="filament-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:16px;">
+                            <option value="pla+">PLA+ (Standard)</option>
+                            <option value="petg">PETG (Recommended)</option>
+                            <option value="abs">ABS (+$3.00)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="add-to-cart" data-id="holder2" data-name="12-Shell Gunwale Mount" data-price="22.00" style="margin-top:8px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer; width:100%;">Add to cart</button>
+                </article>
+
+                <!-- Product 3 -->
+                <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                    <h3>24-Shell Bulkhead Mount</h3>
+                    <img src="image/shell-holder-wall.svg" alt="24-Shell Bulkhead Mount" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                    <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$28.00</p>
+                    <p style="color:#444; font-size:0.95rem;">Holds 24 shells. Wall-mountable for safe storage. Includes mounting hardware.</p>
+                    
+                    <div style="margin:12px 0; text-align:left;">
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block;">Holder Color:</label>
+                        <select class="holder-color-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:8px;">
+                            <option value="black">Black</option>
+                            <option value="od-green">OD Green</option>
+                            <option value="tan">Tan</option>
+                            <option value="gray">Gray</option>
+                            <option value="camo">Camo Pattern</option>
+                            <option value="out-of-stock" disabled style="color:#999;">Out of Stock</option>
+                        </select>
+                        
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block; margin-top:12px;">Filament Type:</label>
+                        <select class="filament-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:16px;">
+                            <option value="pla+">PLA+ (Standard)</option>
+                            <option value="petg">PETG (Recommended)</option>
+                            <option value="abs">ABS (+$3.00)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="add-to-cart" data-id="holder3" data-name="24-Shell Bulkhead Mount" data-price="28.00" style="margin-top:8px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer; width:100%;">Add to cart</button>
+                </article>
+            </section>
+        </section>
+
+        <!-- Marine Shell Dispensers Section -->
+        <section style="margin-bottom:32px;">
+            <h2 style="text-align:center; margin-bottom:20px; color:#333; font-size:1.8rem;">Marine Shell Dispensers</h2>
+            <section class="product-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px;">
+                <!-- Product 4 -->
+                <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                    <h3>Rotating Console Dispenser</h3>
+                    <img src="image/dispenser-rotating.svg" alt="Rotating Console Dispenser" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                    <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$35.00</p>
+                    <p style="color:#444; font-size:0.95rem;">Holds 25 shells in a rotating carousel design. One-handed operation for quick reloads.</p>
+                    
+                    <div style="margin:12px 0; text-align:left;">
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block;">Dispenser Color:</label>
+                        <select class="holder-color-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:8px;">
+                            <option value="black">Black</option>
+                            <option value="od-green">OD Green</option>
+                            <option value="tan">Tan</option>
+                            <option value="gray">Gray</option>
+                            <option value="out-of-stock" disabled style="color:#999;">Out of Stock</option>
+                        </select>
+                        
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block; margin-top:12px;">Filament Type:</label>
+                        <select class="filament-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:16px;">
+                            <option value="pla+">PLA+ (Standard)</option>
+                            <option value="petg">PETG (Recommended)</option>
+                            <option value="abs">ABS (+$5.00)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="add-to-cart" data-id="dispenser1" data-name="Rotating Console Dispenser" data-price="35.00" style="margin-top:8px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer; width:100%;">Add to cart</button>
+                </article>
+
+                <!-- Product 5 -->
+                <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                    <h3>Gravity Feed Boat Mount</h3>
+                    <img src="image/dispenser-gravity.svg" alt="Gravity Feed Boat Mount" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                    <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$42.00</p>
+                    <p style="color:#444; font-size:0.95rem;">Gravity-fed design holds 50 shells. Mount to bench or wall for rapid access.</p>
+                    
+                    <div style="margin:12px 0; text-align:left;">
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block;">Dispenser Color:</label>
+                        <select class="holder-color-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:8px;">
+                            <option value="black">Black</option>
+                            <option value="od-green">OD Green</option>
+                            <option value="tan">Tan</option>
+                            <option value="gray">Gray</option>
+                            <option value="out-of-stock" disabled style="color:#999;">Out of Stock</option>
+                        </select>
+                        
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block; margin-top:12px;">Filament Type:</label>
+                        <select class="filament-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:16px;">
+                            <option value="pla+">PLA+ (Standard)</option>
+                            <option value="petg">PETG (Recommended)</option>
+                            <option value="abs">ABS (+$5.00)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="add-to-cart" data-id="dispenser2" data-name="Gravity Feed Boat Mount" data-price="42.00" style="margin-top:8px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer; width:100%;">Add to cart</button>
+                </article>
+
+                <!-- Product 6 -->
+                <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                    <h3>Compact Tube Holder</h3>
+                    <img src="image/dispenser-tube.svg" alt="Compact Tube Holder" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                    <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$25.00</p>
+                    <p style="color:#444; font-size:0.95rem;">Compact tube design holds 10 shells. Portable and lightweight for field use.</p>
+                    
+                    <div style="margin:12px 0; text-align:left;">
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block;">Dispenser Color:</label>
+                        <select class="holder-color-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:8px;">
+                            <option value="black">Black</option>
+                            <option value="od-green">OD Green</option>
+                            <option value="tan">Tan</option>
+                            <option value="gray">Gray</option>
+                            <option value="out-of-stock" disabled style="color:#999;">Out of Stock</option>
+                        </select>
+                        
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block; margin-top:12px;">Filament Type:</label>
+                        <select class="filament-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:16px;">
+                            <option value="pla+">PLA+ (Standard)</option>
+                            <option value="petg">PETG (Recommended)</option>
+                            <option value="abs">ABS (+$5.00)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="add-to-cart" data-id="dispenser3" data-name="Compact Tube Holder" data-price="25.00" style="margin-top:8px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer; width:100%;">Add to cart</button>
+                </article>
+            </section>
+        </section>
+    </main>
+    <script src="js-01-cart.js"></script>
+    <script src="js-02-cart-paypal.js"></script>
+    <script>
+        // Override add-to-cart to include color and filament options
+        document.addEventListener('click', (e) => {
+            if (e.target && e.target.classList.contains('add-to-cart')) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const btn = e.target;
+                const card = btn.closest('.product-card');
+                const holderColorSelect = card.querySelector('.holder-color-select');
+                const filamentSelect = card.querySelector('.filament-select');
+                
+                // Check if color is out of stock
+                if (holderColorSelect && holderColorSelect.value === 'out-of-stock') {
+                    alert('The selected color is out of stock. Please choose a different color.');
+                    return false;
+                }
+                
+                // Get base price
+                let basePrice = parseFloat(btn.getAttribute('data-price')) || 15.00;
+                let finalPrice = basePrice;
+                
+                // Add ABS upcharge (different amounts for holders vs dispensers)
+                if (filamentSelect && filamentSelect.value === 'abs') {
+                    const productName = btn.dataset.name || '';
+                    if (productName.includes('Dispenser')) {
+                        finalPrice += 5.00;
+                    } else {
+                        finalPrice += 3.00;
+                    }
+                }
+                
+                // Build note with all selections
+                let itemNote = '';
+                
+                if (holderColorSelect) {
+                    const color = holderColorSelect.options[holderColorSelect.selectedIndex].text;
+                    itemNote += `Color: ${color}`;
+                }
+                
+                if (filamentSelect) {
+                    const filament = filamentSelect.value.toUpperCase();
+                    if (itemNote) itemNote += ' | ';
+                    itemNote += `Filament: ${filament}`;
+                }
+                
+                const item = { 
+                    id: btn.dataset.id || btn.getAttribute('data-id'), 
+                    name: btn.dataset.name || btn.getAttribute('data-name'), 
+                    price: finalPrice, 
+                    note: itemNote 
+                };
+                
+                console.log('Adding item to cart:', item);
+                addToCart(item);
+                
+                let toastMsg = `${item.name} added to cart`;
+                if (holderColorSelect && filamentSelect) {
+                    toastMsg += ` (${holderColorSelect.options[holderColorSelect.selectedIndex].text}, ${filamentSelect.value.toUpperCase()})`;
+                }
+                toastMsg += ` - $${finalPrice.toFixed(2)}`;
+                
+                showToast(toastMsg);
+                btn.textContent = 'Added';
+                setTimeout(() => btn.textContent = 'Add to cart', 1200);
+                
+                return false;
+            }
+        });
+    </script>
+    <script src="js-06-stl-viewer.js"></script>
+</body>
+</html>

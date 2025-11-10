@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plain Backcreek Cap - Product Specs | Backcreek Designs</title>
+    <link rel="stylesheet" href="css-01-home.css">
+</head>
+<body>
+    <header style="text-align:center; padding: 24px 0; font-size:2rem; font-weight:bold; background:#f8f9fa; color:#333;">
+        Backcreek Designs
+    </header>
+    <nav class="navbar" style="background:#333; padding:12px 20px; display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex; gap:20px;">
+            <a href="01-home.html" style="color:white; text-decoration:none; padding:8px 12px;">Home</a>
+            <a href="about.html" style="color:white; text-decoration:none; padding:8px 12px;">About</a>
+            <a href="services.html" style="color:white; text-decoration:none; padding:8px 12px;">Services</a>
+            <a href="contact.html" style="color:white; text-decoration:none; padding:8px 12px;">Contact</a>
+        </div>
+        <div>
+            <a href="cart.html" style="color:white; text-decoration:none; padding:8px 12px; display:flex; align-items:center; gap:8px;">
+                <span>🛒 Cart</span>
+                <span id="cart-badge" style="background:#e74c3c; color:white; padding:2px 8px; border-radius:12px; font-size:0.85rem;">0</span>
+            </a>
+        </div>
+    </nav>
+    <div style="text-align:left; padding:10px 20px; background:#f8f9fa; border-bottom:1px solid #eee;">
+        <a href="standerdcaps.html" style="display:inline-flex; align-items:center; text-decoration:none; color:#4CAF50; font-weight:bold; padding:8px 16px; background:white; border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+            <span style="margin-right:8px;">←</span> Back to Standard Caps
+        </a>
+    </div>
+    <main style="max-width:1000px; margin:40px auto; padding:0 20px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start;">
+            <!-- Product Image -->
+            <div style="background:white; padding:20px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+                <img src="image/plain.png" alt="Plain Backcreek Cap" style="width:100%; height:auto; border-radius:8px;">
+            </div>
+            
+            <!-- Product Details -->
+            <div class="product-card" style="background:white; padding:30px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+                <h1 style="margin-bottom:12px; font-size:2rem;">Plain Backcreek Cap</h1>
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.75rem; margin-bottom:20px;">$20.00</p>
+                
+                <p style="color:#555; line-height:1.6; margin-bottom:24px;">
+                    Improved airflow and sleek styling for high-performance motors. Clean, minimalist design that complements any boat.
+                </p>
+                
+                <h3 style="margin-top:24px; margin-bottom:12px; border-bottom:2px solid #4CAF50; padding-bottom:8px;">Product Specifications</h3>
+                <table style="width:100%; border-collapse:collapse; margin-bottom:24px;">
+                    <tr style="border-bottom:1px solid #eee;">
+                        <td style="padding:10px 0; font-weight:bold; color:#333;">Material:</td>
+                        <td style="padding:10px 0; color:#666;">Durable PLA+ plastic</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #eee;">
+                        <td style="padding:10px 0; font-weight:bold; color:#333;">Compatibility:</td>
+                        <td style="padding:10px 0; color:#666;">Universal fit for most marine motors</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #eee;">
+                        <td style="padding:10px 0; font-weight:bold; color:#333;">Finish:</td>
+                        <td style="padding:10px 0; color:#666;">Smooth matte finish</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #eee;">
+                        <td style="padding:10px 0; font-weight:bold; color:#333;">Weight:</td>
+                        <td style="padding:10px 0; color:#666;">Ultra-lightweight (approx. 45g)</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #eee;">
+                        <td style="padding:10px 0; font-weight:bold; color:#333;">Color Options:</td>
+                        <td style="padding:10px 0; color:#666;">White, Black, Gray</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px 0; font-weight:bold; color:#333;">Ventilation:</td>
+                        <td style="padding:10px 0; color:#666;">Optimized airflow design</td>
+                    </tr>
+                </table>
+                
+                <h3 style="margin-top:24px; margin-bottom:12px;">Features</h3>
+                <ul style="color:#555; line-height:1.8; margin-bottom:24px; padding-left:20px;">
+                    <li>Clean, minimalist aesthetic</li>
+                    <li>Enhanced ventilation system</li>
+                    <li>Weather and saltwater resistant</li>
+                    <li>Quick-release design</li>
+                    <li>Made in USA</li>
+                </ul>
+                
+                <button class="add-to-cart" data-id="cap2" data-name="Plain Backcreek Cap" data-price="20.00" style="width:100%; padding:16px; background:#4CAF50; color:white; border:none; border-radius:8px; font-size:1.1rem; font-weight:bold; cursor:pointer; margin-top:20px;">
+                    Add to Cart - $20.00
+                </button>
+            </div>
+        </div>
+    </main>
+    <script src="js-01-cart.js"></script>
+    <script src="js-02-cart-paypal.js"></script>
+</body>
+</html>

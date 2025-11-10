@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Caps - Backcreek Designs</title>
+    <link rel="stylesheet" href="css-01-home.css">
+</head>
+<body>
+    <header style="text-align:center; padding: 24px 0; font-size:2rem; font-weight:bold; background:#f8f9fa; color:#333;">
+        Backcreek Designs
+    </header>
+    <nav class="navbar" style="background:#333; padding:12px 20px; display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex; gap:20px;">
+            <a href="01-home.html" style="color:white; text-decoration:none; padding:8px 12px;">Home</a>
+            <a href="about.html" style="color:white; text-decoration:none; padding:8px 12px;">About</a>
+            <a href="services.html" style="color:white; text-decoration:none; padding:8px 12px;">Services</a>
+            <a href="contact.html" style="color:white; text-decoration:none; padding:8px 12px;">Contact</a>
+        </div>
+        <div>
+            <a href="cart.html" style="color:white; text-decoration:none; padding:8px 12px; display:flex; align-items:center; gap:8px;">
+                <span>🛒 Cart</span>
+                <span id="cart-badge" style="background:#e74c3c; color:white; padding:2px 8px; border-radius:12px; font-size:0.85rem;">0</span>
+            </a>
+        </div>
+    </nav>
+    <div style="text-align:left; padding:10px 20px; background:#f8f9fa; border-bottom:1px solid #eee;">
+        <a href="01-home.html" style="display:inline-flex; align-items:center; text-decoration:none; color:#4CAF50; font-weight:bold; padding:8px 16px; background:white; border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+            <span style="margin-right:8px;">←</span> Back
+        </a>
+    </div>
+    <main style="max-width:1100px; margin:20px auto; padding:0 20px;">
+        <section style="margin-bottom:24px; text-align:center;">
+            <h1 style="margin-bottom:8px;">Custom Caps</h1>
+            <p style="color:#666; max-width:800px; margin:0 auto;">The air scoop cap is designs for performance so your engine will get more air and stay cooler.</p>
+        </section>
+
+        <section class="product-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px;">
+            <!-- Product 1 -->
+            <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Custom Logo Cap</h3>
+                <img src="image/custom-logo-cap.svg" alt="Custom Logo Cap" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$35.00</p>
+                <p style="color:#444; font-size:0.95rem;">Add your logo or design to a premium-quality cap.</p>
+                <div style="display:flex; gap:10px; justify-content:center;">
+                    <a href="product-custom-logo-cap.html" style="padding:8px 12px; border:1px solid #4CAF50; color:#4CAF50; border-radius:6px; text-decoration:none;">View details</a>
+                    <button class="add-to-cart" data-id="custom1" data-name="Custom Logo Cap" data-price="35.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+                </div>
+            </article>
+
+            <!-- Product 2 -->
+            <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Custom Color Cap</h3>
+                <img src="image/custom-color-cap.svg" alt="Custom Color Cap" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$30.00</p>
+                <p style="color:#444; font-size:0.95rem;">Choose your color to match your boat's theme.</p>
+                <div style="display:flex; gap:10px; justify-content:center;">
+                    <a href="product-custom-color-cap.html" style="padding:8px 12px; border:1px solid #4CAF50; color:#4CAF50; border-radius:6px; text-decoration:none;">View details</a>
+                    <button class="add-to-cart" data-id="custom2" data-name="Custom Color Cap" data-price="30.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+                </div>
+            </article>
+            
+            <!-- Product 3 -->
+            <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Fully Custom Design</h3>
+                <img src="image/fully-custom-cap.svg" alt="Fully Custom Design" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$50.00</p>
+                <p style="color:#444; font-size:0.95rem;">Complete custom design with your specifications - logo, color, and features.</p>
+                <div style="display:flex; gap:10px; justify-content:center;">
+                    <a href="product-fully-custom-design.html" style="padding:8px 12px; border:1px solid #4CAF50; color:#4CAF50; border-radius:6px; text-decoration:none;">View details</a>
+                    <button class="add-to-cart" data-id="custom3" data-name="Fully Custom Design" data-price="50.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+                </div>
+            </article>
+        </section>
+    </main>
+    <script src="js-01-cart.js"></script>
+    <script src="js-02-cart-paypal.js"></script>
+</body>
+</html>

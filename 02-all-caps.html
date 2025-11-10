@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Cowling Caps - Backcreek Designs</title>
+    <link rel="stylesheet" href="css-01-home.css">
+    <!-- Three.js for 3D STL Viewer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <header style="text-align:center; padding: 24px 0; font-size:2rem; font-weight:bold; background:#f8f9fa; color:#333;">
+        Backcreek Designs
+    </header>
+    <nav class="navbar" style="background:#333; padding:12px 20px; display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex; gap:20px;">
+            <a href="01-home.html" style="color:white; text-decoration:none; padding:8px 12px;">Home</a>
+            <a href="01-about.html" style="color:white; text-decoration:none; padding:8px 12px;">About</a>
+            <a href="01-services.html" style="color:white; text-decoration:none; padding:8px 12px;">Services</a>
+            <a href="01-contact.html" style="color:white; text-decoration:none; padding:8px 12px;">Contact</a>
+        </div>
+        <div>
+            <a href="04-cart.html" style="color:white; text-decoration:none; padding:8px 12px; display:flex; align-items:center; gap:8px;">
+                <span>🛒 Cart</span>
+                <span id="cart-badge" style="background:#e74c3c; color:white; padding:2px 8px; border-radius:12px; font-size:0.85rem;">0</span>
+            </a>
+        </div>
+    </nav>
+    <div style="text-align:left; padding:10px 20px; background:#f8f9fa; border-bottom:1px solid #eee;">
+        <a href="01-home.html" style="display:inline-flex; align-items:center; text-decoration:none; color:#4CAF50; font-weight:bold; padding:8px 16px; background:white; border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+            <span style="margin-right:8px;">←</span> Back
+        </a>
+    </div>
+    <main style="max-width:1100px; margin:20px auto; padding:0 20px;">
+        <section style="margin-bottom:24px; text-align:center;">
+            <h1 style="margin-bottom:8px;">All Cowling Caps</h1>
+            <p style="color:#666; max-width:800px; margin:0 auto;">Browse our complete selection of cowling caps for 2-stroke outboard motors.</p>
+        </section>
+
+        <!-- Standard Caps Section -->
+        <section style="margin-bottom:32px;">
+            <h2 style="text-align:center; margin-bottom:20px; color:#333; font-size:1.8rem;">Standard Caps</h2>
+            <section class="product-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px;">
+                <!-- Product 1 -->
+                <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                    <h3>Backcreek raised logo</h3>
+                    <img src="image/backcreekraisedlogo.png" alt="Backcreek Raised Logo" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                    <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$20.00</p>
+                    <p style="color:#444; font-size:0.95rem;">Classic backcreek logo cap, custom-fit for 2-stroke cowling.</p>
+                    
+                    <div style="margin:12px 0; text-align:left;">
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block;">Cap Color:</label>
+                        <select class="cap-color-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:8px;">
+                            <option value="black">Black</option>
+                            <option value="white">White</option>
+                            <option value="red">Red</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="yellow">Yellow</option>
+                            <option value="orange">Orange</option>
+                            <option value="gray">Gray</option>
+                            <option value="out-of-stock" disabled style="color:#999;">Out of Stock</option>
+                        </select>
+                        
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block; margin-top:12px;">Lettering Color:</label>
+                        <select class="lettering-color-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:8px;">
+                            <option value="black">Black</option>
+                            <option value="white">White</option>
+                            <option value="red">Red</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="yellow">Yellow</option>
+                            <option value="orange">Orange</option>
+                            <option value="gray">Gray</option>
+                            <option value="out-of-stock" disabled style="color:#999;">Out of Stock</option>
+                        </select>
+                        
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block; margin-top:12px;">Filament Type:</label>
+                        <select class="filament-select" data-base-price="20.00" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:12px;">
+                            <option value="pla+">PLA+ (Standard)</option>
+                            <option value="petg">PETG (Standard)</option>
+                        </select>
+                        <div class="price-display" style="font-weight:bold; color:#4CAF50; font-size:1.1rem; margin-bottom:16px;">Total: $20.00</div>
+                    </div>
+                    
+                    <button class="add-to-cart" data-id="cap1" data-name="Backcreek Raised Logo" data-base-price="20.00" style="margin-top:8px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer; width:100%;">Add to cart</button>
+                </article>
+
+                <!-- Product 2 -->
+                <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                    <h3>Backcreek center ridge cap</h3>
+                    <img src="image/backcreekcenterridgecap.png" alt="Backcreek Center Ridge Cap" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                    <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$20.00</p>
+                    <p style="color:#444; font-size:0.95rem;">Emphasizes the groove/raised middle sounds precise and functional.</p>
+                    
+                    <div style="margin:12px 0; text-align:left;">
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block;">Cap Color:</label>
+                        <select class="cap-color-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:8px;">
+                            <option value="black">Black</option>
+                            <option value="white">White</option>
+                            <option value="red">Red</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="yellow">Yellow</option>
+                            <option value="orange">Orange</option>
+                            <option value="gray">Gray</option>
+                            <option value="out-of-stock" disabled style="color:#999;">Out of Stock</option>
+                        </select>
+                        
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block; margin-top:12px;">Lettering Color:</label>
+                        <select class="lettering-color-select" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:8px;">
+                            <option value="black">Black</option>
+                            <option value="white">White</option>
+                            <option value="red">Red</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="yellow">Yellow</option>
+                            <option value="orange">Orange</option>
+                            <option value="gray">Gray</option>
+                            <option value="out-of-stock" disabled style="color:#999;">Out of Stock</option>
+                        </select>
+                        
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block; margin-top:12px;">Filament Type:</label>
+                        <select class="filament-select" data-base-price="20.00" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:12px;">
+                            <option value="pla+">PLA+ (Standard)</option>
+                            <option value="petg">PETG (Standard)</option>
+                        </select>
+                        <div class="price-display" style="font-weight:bold; color:#4CAF50; font-size:1.1rem; margin-bottom:16px;">Total: $20.00</div>
+                    </div>
+                    
+                    <button class="add-to-cart" data-id="cap2" data-name="Backcreek Center Ridge Cap" data-base-price="20.00" style="margin-top:8px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer; width:100%;">Add to cart</button>
+                </article>
+
+                <!-- Product 3 -->
+                <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                    <h3>plain cap</h3>
+                    <img src="image/plain.png" alt="Plain Cap" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                    <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$20.00</p>
+                    <p style="color:#444; font-size:0.95rem;">Perfect for just covering the hole in the top of your cowling</p>
+                    
+                    <div style="margin:12px 0; text-align:left;">
+                        <label style="font-weight:bold; color:#333; margin-bottom:6px; display:block;">Filament Type:</label>
+                        <select class="filament-select" data-base-price="20.00" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; margin-bottom:12px;">
+                            <option value="pla+">PLA+ (Standard)</option>
+                            <option value="petg">PETG (Standard)</option>
+                        </select>
+                        <div class="price-display" style="font-weight:bold; color:#4CAF50; font-size:1.1rem; margin-bottom:16px;">Total: $20.00</div>
+                    </div>
+                    
+                    <button class="add-to-cart" data-id="cap3" data-name="Plain Cap" data-base-price="20.00" style="margin-top:8px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer; width:100%;">Add to cart</button>
+                </article>
+            </section>
+        </section>
+
+        <!-- Premium Caps Section -->
+        <section style="margin-bottom:32px;">
+            <h2 style="text-align:center; margin-bottom:20px; color:#333; font-size:1.8rem;">Premium Caps</h2>
+            <section class="product-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px;">
+                <!-- Product 4 -->
+                <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                    <h3>Yamaha Cap</h3>
+                    <img src="image/product.jpg" alt="Yamaha Cap" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                    <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$25.00</p>
+                    <p style="color:#444; font-size:0.95rem; margin-bottom:16px;">Classic Yamaha logo cap, custom-fit for 2-stroke cowling.</p>
+                    <button class="add-to-cart" data-id="premium1" data-name="Yamaha Cap" data-price="25.00" style="margin-top:8px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer; width:100%;">Add to cart</button>
+                </article>
+
+                <!-- Product 5 -->
+                <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                    <h3>American Flag Cap</h3>
+                    <img src="image/american.png" alt="American Flag Cap" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                    <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$25.00</p>
+                    <p style="color:#444; font-size:0.95rem; margin-bottom:16px;">Light weight plastic with an American flag design this cap not only looks good but will pop on your boat.</p>
+                    <button class="add-to-cart" data-id="premium2" data-name="American Flag Cap" data-price="25.00" style="margin-top:8px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer; width:100%;">Add to cart</button>
+                </article>
+
+                <!-- Product 6 -->
+                <article class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                    <h3>Premium Racing Edition</h3>
+                    <img src="image/racing-cap.svg" alt="Premium Racing Edition" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                    <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$79.00</p>
+                    <p style="color:#444; font-size:0.95rem; margin-bottom:16px;">Race-spec design with maximum cooling and aggressive styling.</p>
+                    <button class="add-to-cart" data-id="premium3" data-name="Premium Racing Edition" data-price="79.00" style="margin-top:8px; padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer; width:100%;">Add to cart</button>
+                </article>
+            </section>
+        </section>
+    </main>
+    <script src="js-01-cart.js"></script>
+    <script src="js-02-cart-paypal.js"></script>
+    <script>
+        // Filament selection functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filamentSelects = document.querySelectorAll('.filament-select');
+            
+            filamentSelects.forEach(select => {
+                const priceDisplay = select.parentElement.querySelector('.price-display');
+                const basePrice = parseFloat(select.dataset.basePrice);
+                
+                select.addEventListener('change', function() {
+                    let totalPrice = basePrice;
+                    if (this.value === 'tpu') {
+                        totalPrice += 5.00;
+                    }
+                    priceDisplay.textContent = `Total: $${totalPrice.toFixed(2)}`;
+                });
+            });
+        });
+        
+        // Override add-to-cart to include filament selection and color options
+        document.addEventListener('click', (e) => {
+            if (e.target && e.target.classList.contains('add-to-cart')) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const btn = e.target;
+                const card = btn.closest('.product-card');
+                const filamentSelect = card.querySelector('.filament-select');
+                const capColorSelect = card.querySelector('.cap-color-select');
+                const letteringColorSelect = card.querySelector('.lettering-color-select');
+                const noteEl = card.querySelector('.item-note');
+                const note = noteEl ? noteEl.value.trim() : '';
+                
+                // Check if colors are out of stock
+                if (capColorSelect && capColorSelect.value === 'out-of-stock') {
+                    alert('The selected cap color is out of stock. Please choose a different color.');
+                    return false;
+                }
+                if (letteringColorSelect && letteringColorSelect.value === 'out-of-stock') {
+                    alert('The selected lettering color is out of stock. Please choose a different color.');
+                    return false;
+                }
+                
+                // Get base price - try multiple ways
+                let basePrice = parseFloat(btn.getAttribute('data-base-price')) || 
+                               parseFloat(btn.dataset.basePrice) || 
+                               parseFloat(btn.getAttribute('data-price')) || 
+                               parseFloat(btn.dataset.price) || 
+                               20.00;
+                
+                const filamentType = filamentSelect ? filamentSelect.value : 'pla+';
+                let finalPrice = basePrice;
+                
+                if (filamentType === 'tpu') {
+                    finalPrice += 5.00;
+                }
+                
+                // Build note with all selections
+                let itemNote = '';
+                
+                if (filamentSelect) {
+                    itemNote += `Filament: ${filamentType.toUpperCase()}`;
+                }
+                
+                if (capColorSelect) {
+                    const capColor = capColorSelect.options[capColorSelect.selectedIndex].text;
+                    if (itemNote) itemNote += ' | ';
+                    itemNote += `Cap: ${capColor}`;
+                }
+                
+                if (letteringColorSelect) {
+                    const letteringColor = letteringColorSelect.options[letteringColorSelect.selectedIndex].text;
+                    if (itemNote) itemNote += ' | ';
+                    itemNote += `Lettering: ${letteringColor}`;
+                }
+                
+                if (note) {
+                    if (itemNote) itemNote += ' | ';
+                    itemNote += note;
+                }
+                
+                const item = { 
+                    id: btn.dataset.id || btn.getAttribute('data-id'), 
+                    name: btn.dataset.name || btn.getAttribute('data-name'), 
+                    price: finalPrice, 
+                    note: itemNote 
+                };
+                
+                console.log('Adding item to cart:', item);
+                addToCart(item);
+                
+                let toastMsg = `${item.name} added to cart`;
+                if (capColorSelect && letteringColorSelect) {
+                    toastMsg += ` (Cap: ${capColorSelect.options[capColorSelect.selectedIndex].text}, Lettering: ${letteringColorSelect.options[letteringColorSelect.selectedIndex].text})`;
+                }
+                toastMsg += ` - $${finalPrice.toFixed(2)}`;
+                
+                showToast(toastMsg);
+                btn.textContent = 'Added';
+                setTimeout(() => btn.textContent = 'Add to cart', 1200);
+                
+                return false;
+            }
+        });
+    </script>
+    <script src="js-04-advanced-color-preview.js"></script>
+    <script src="js-06-stl-viewer.js"></script>
+</body>
+</html>

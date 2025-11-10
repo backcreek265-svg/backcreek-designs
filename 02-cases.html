@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cases - Backcreek Designs</title>
+    <link rel="stylesheet" href="css-01-home.css">
+</head>
+<body>
+    <header style="text-align:center; padding: 24px 0; font-size:2rem; font-weight:bold; background:#f8f9fa; color:#333;">
+        Backcreek Designs
+    </header>
+    <nav class="navbar" style="background:#333; padding:12px 20px; display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex; gap:20px;">
+            <a href="01-home.html" style="color:white; text-decoration:none; padding:8px 12px;">Home</a>
+            <a href="about.html" style="color:white; text-decoration:none; padding:8px 12px;">About</a>
+            <a href="services.html" style="color:white; text-decoration:none; padding:8px 12px;">Services</a>
+            <a href="contact.html" style="color:white; text-decoration:none; padding:8px 12px;">Contact</a>
+        </div>
+        <div>
+            <a href="cart.html" style="color:white; text-decoration:none; padding:8px 12px; display:flex; align-items:center; gap:8px;">
+                <span>🛒 Cart</span>
+                <span id="cart-badge" style="background:#e74c3c; color:white; padding:2px 8px; border-radius:12px; font-size:0.85rem;">0</span>
+            </a>
+        </div>
+    </nav>
+    <div style="text-align:left; padding:10px 20px; background:#f8f9fa; border-bottom:1px solid #eee;">
+        <a href="01-home.html" style="display:inline-flex; align-items:center; text-decoration:none; color:#4CAF50; font-weight:bold; padding:8px 16px; background:white; border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+            <span style="margin-right:8px;">←</span> Back
+        </a>
+    </div>
+    <main style="max-width:1100px; margin:20px auto; padding:0 20px;">
+        <section style="margin-bottom:24px; text-align:center;">
+            <h1 style="margin-bottom:8px;">key chain and accessories</h1>
+            <p style="color:#666; max-width:800px; margin:0 auto;">protect your keys and accessories with our custom 3D-printed designs.</p>
+        </section>
+
+        <section class="product-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px;">
+            <!-- Product 1 -->
+            <article id="phone-case" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Wistle case</h3>
+                <img src="image/wistlekeychaincase.png" alt="Waterproof Phone Case" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$6.50</p>
+                <p style="color:#444; font-size:0.95rem;">Rugged case protects your wistle from being out on the water.</p>
+                <button class="add-to-cart" data-id="case1" data-name="Waterproof Phone Case" data-price="6.50" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+            </article>
+
+            <!-- Product 2 -->
+            <article id="tool-case" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>square key chain case</h3>
+                <img src="image/squarekeychaincase.png" alt="Marine Tool Case" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$6.00</p>
+                <p style="color:#444; font-size:0.95rem;">This case helps protect your square key chain from damage. And also helps protect your boat paint.</p>
+                <button class="add-to-cart" data-id="case2" data-name="Marine Tool Case" data-price="6.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+            </article>
+
+            <!-- Product 3 -->
+            <article id="key-case" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Floating Key Case</h3>
+                <img src="image/key-case.svg" alt="Floating Key Case" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$18.00</p>
+                <p style="color:#444; font-size:0.95rem;">Buoyant key case that floats if dropped in water — never lose your keys again.</p>
+                <button class="add-to-cart" data-id="case3" data-name="Floating Key Case" data-price="18.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+            </article>
+
+            <!-- Product 4 -->
+            <article id="electronics-case" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Electronics Case</h3>
+                <img src="image/electronics-case.svg" alt="Electronics Case" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$28.00</p>
+                <p style="color:#444; font-size:0.95rem;">Protective case for GPS, radios, and small marine electronics.</p>
+                <button class="add-to-cart" data-id="case4" data-name="Electronics Case" data-price="28.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+            </article>
+
+            <!-- Product 5 -->
+            <article id="custom-case" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Custom Case</h3>
+                <img src="image/custom-case.svg" alt="Custom Case" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$45.00</p>
+                <p style="color:#444; font-size:0.95rem;">Custom-designed case for any item — tell us what you need protected.</p>
+                <div style="margin:10px 0; text-align:left;">
+                    <label for="custom-case-note" style="display:block; font-size:0.9rem; color:#333; margin-bottom:6px;">Describe what you need (dimensions, item type, features)</label>
+                    <textarea id="custom-case-note" class="item-note" rows="2" placeholder="e.g., Case for 7-inch GPS unit, needs mounting holes" style="width:100%; padding:8px 10px; border:1px solid #ddd; border-radius:6px;"></textarea>
+                </div>
+                <button class="add-to-cart" data-id="case5" data-name="Custom Case" data-price="45.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+            </article>
+
+            <!-- Product 6 -->
+            <article id="sunglasses-case" class="product-card" style="background:rgba(255,255,255,0.95); padding:18px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+                <h3>Floating Sunglasses Case</h3>
+                <img src="image/sunglasses-case.svg" alt="Floating Sunglasses Case" style="width:100%; height:auto; border-radius:8px; margin:12px 0;">
+                <p style="font-weight:bold; color:#4CAF50; font-size:1.25rem;">$16.00</p>
+                <p style="color:#444; font-size:0.95rem;">Buoyant sunglasses case — protects and floats your shades on the water.</p>
+                <button class="add-to-cart" data-id="case6" data-name="Floating Sunglasses Case" data-price="16.00" style="padding:8px 12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Add to cart</button>
+            </article>
+        </section>
+    </main>
+    <script src="js-01-cart.js"></script>
+    <script src="js-02-cart-paypal.js"></script>
+</body>
+</html>

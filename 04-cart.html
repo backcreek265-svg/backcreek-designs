@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Your Cart - Backcreek Designs</title>
+    <link rel="stylesheet" href="css-01-home.css">
+</head>
+<body>
+    <header style="text-align:center; padding: 24px 0; font-size:2rem; font-weight:bold; background:#f8f9fa; color:#333;">Backcreek Designs - Cart</header>
+    <main style="max-width:900px; margin:40px auto; padding:0 20px;">
+        <h2>Your Cart</h2>
+        
+        <div id="cart-items"></div>
+        <div id="cart-total" style="margin-top:20px; font-weight:bold;"></div>
+        <form id="checkout-form" style="margin-top:20px; display:flex; flex-wrap:wrap; gap:18px 32px; align-items:center; max-width:700px;">
+            <div style="flex:1 1 220px; display:flex; flex-direction:column; font-size:0.95rem;">
+                <label for="buyer-name">Full Name</label>
+                <input id="buyer-name" type="text" placeholder="Your name" style="padding:8px 10px; margin-top:6px; border:1px solid #ddd; border-radius:6px;">
+            </div>
+            <div style="flex:1 1 220px; display:flex; flex-direction:column; font-size:0.95rem;">
+                <label for="buyer-email">Email</label>
+                <input id="buyer-email" type="email" placeholder="you@example.com" style="padding:8px 10px; margin-top:6px; border:1px solid #ddd; border-radius:6px;">
+            </div>
+            <div style="flex:1 1 220px; display:flex; flex-direction:column; font-size:0.95rem;">
+                <label for="buyer-phone">Phone</label>
+                <input id="buyer-phone" type="tel" placeholder="(555) 123-4567" style="padding:8px 10px; margin-top:6px; border:1px solid #ddd; border-radius:6px;">
+            </div>
+            <div style="flex:2 1 320px; display:flex; flex-direction:column; font-size:0.95rem;">
+                <label for="buyer-address">Shipping Address</label>
+                <textarea id="buyer-address" rows="2" placeholder="Street, City, State, ZIP" style="padding:8px 10px; margin-top:6px; border:1px solid #ddd; border-radius:6px;"></textarea>
+            </div>
+            <div style="flex:1 1 220px; display:flex; flex-direction:column; font-size:0.95rem;">
+                <label for="shipping-cost">Shipping Cost (USD)</label>
+                <div style="display:flex; gap:8px; align-items:center;">
+                  <input id="shipping-cost" type="number" min="0" step="0.01" value="0.00" style="padding:8px 10px; border:1px solid #ddd; border-radius:6px;">
+                  <button id="calc-shipping" type="button" style="padding:8px 14px; background:#2196F3; color:white; border:none; border-radius:6px; cursor:pointer;">Calculate Shipping</button>
+                </div>
+            </div>
+                        <div style="flex:1 1 220px; display:flex; flex-direction:column; font-size:0.95rem;">
+                                <label for="tracking-number">Tracking Number (optional)</label>
+                                <input id="tracking-number" type="text" placeholder="9400..." style="padding:8px 10px; margin-top:6px; border:1px solid #ddd; border-radius:6px;">
+                        </div>
+                        <div style="flex:1 1 100%; display:flex; flex-direction:row; justify-content:flex-start; gap:12px; flex-wrap:wrap; align-items:center;">
+                                <button id="submit-order-btn" type="button" style="padding:14px 28px; background:#4CAF50; color:white; border:none; border-radius:8px; cursor:pointer; font-size:1.1rem; font-weight:bold;">📋 Submit Order to Google Sheets</button>
+                <button id="cashapp-checkout" type="button" style="padding:14px 28px; background:#00D632; color:white; border:none; border-radius:8px; cursor:pointer; font-size:1.1rem; font-weight:bold;">💰 Pay with Cash App</button>
+                <button id="paypal-checkout" type="button" style="padding:14px 28px; background:#003087; color:white; border:none; border-radius:8px; cursor:pointer; font-size:1.1rem; font-weight:bold;">PayPal</button>
+                <a href="01-home.html" style="padding:12px 20px; background:#607D8B; color:white; border:none; border-radius:6px; cursor:pointer; text-decoration:none; display:inline-block;">Keep Shopping</a>
+            </div>
+        </form>
+    </main>
+    <script src="js-01-cart.js"></script>
+    <script src="js-02-cart-paypal.js"></script>
+    <script src="js-order-submission.js"></script>
+    <script>
+        // Submit Order to Google Sheets button handler
+        document.getElementById('submit-order-btn').addEventListener('click', async function() {
+            const cart = JSON.parse(localStorage.getItem('backcreek_cart')) || [];
+            
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            // Get customer info from form
+            const customerName = document.getElementById('buyer-name').value.trim();
+            const customerEmail = document.getElementById('buyer-email').value.trim();
+            const trackingNumber = (document.getElementById('tracking-number')?.value || '').trim();
+            
+            if (!customerName || !customerEmail) {
+                alert('Please enter your name and email first!');
+                return;
+            }
+            
+            // Disable button while submitting
+            const btn = this;
+            btn.disabled = true;
+            btn.textContent = '⏳ Submitting...';
+            
+            try {
+                // Generate a single order ID for this submission
+                const orderId = (typeof generateOrderId === 'function') ? generateOrderId(customerName, customerEmail) : `BC-${Date.now()}`;
+                
+                // Submit each cart item to Google Sheets
+                for (const item of cart) {
+                    await submitOrderToSheet({
+                        orderId: orderId,
+                        customerName: customerName,
+                        customerEmail: customerEmail,
+                        productName: item.name || item.id,
+                        material: item.filament || 'PLA+',
+                        color: item.color || 'Not specified',
+                        notes: item.note || '',
+                        price: item.price ? item.price.toFixed(2) : '0.00',
+                        quantity: item.qty || 1,
+                        tracking: trackingNumber
+                    });
+                    
+                    // Small delay between submissions
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+                
+                // Persist a lightweight summary locally
+                try {
+                    const summary = {
+                        orderId,
+                        customerName,
+                        customerEmail,
+                        tracking: trackingNumber,
+                        items: cart.map(i => ({ name: i.name || i.id, qty: i.qty || 1, price: i.price || 0 })),
+                        submittedAt: new Date().toISOString()
+                    };
+                    localStorage.setItem('backcreek_last_order', JSON.stringify(summary));
+                    // Append to orders history
+                    const existing = JSON.parse(localStorage.getItem('backcreek_orders') || '[]');
+                    existing.push(summary);
+                    localStorage.setItem('backcreek_orders', JSON.stringify(existing));
+                } catch (e) { /* ignore storage errors */ }
+
+                alert(`✅ Order submitted!\nYour Order ID: ${orderId}\n\nA confirmation email will be sent to ${customerEmail} automatically.`);
+                btn.textContent = `✅ Submitted (ID: ${orderId})`;
+                
+            } catch (error) {
+                console.error('Error submitting order:', error);
+                alert('❌ Error submitting order. Please try again.');
+                btn.disabled = false;
+                btn.textContent = '📋 Submit Order to Google Sheets';
+            }
+        });
+    </script>
+</body>
+</html>

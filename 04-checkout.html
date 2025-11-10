@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Choose Payment Method - Backcreek Designs</title>
+  <link rel="stylesheet" href="css-01-home.css">
+</head>
+<body>
+  <header style="text-align:center; padding: 24px 0; font-size:2rem; font-weight:bold; background:#f8f9fa; color:#333;">Choose Payment Method</header>
+  <main style="max-width:600px; margin:40px auto; padding:0 20px; text-align:center;">
+    <h2>Enter your info to checkout</h2>
+    <form id="checkout-info" style="margin:0 auto 32px auto; max-width:400px; display:flex; flex-direction:column; gap:18px; align-items:stretch;">
+      <input id="buyer-name" type="text" placeholder="Full Name" required style="padding:10px; border-radius:6px; border:1px solid #ddd;">
+      <input id="buyer-email" type="email" placeholder="Email" required style="padding:10px; border-radius:6px; border:1px solid #ddd;">
+      <input id="buyer-phone" type="tel" placeholder="Phone" required style="padding:10px; border-radius:6px; border:1px solid #ddd;">
+      <textarea id="buyer-address" rows="3" placeholder="Street Address, City, State, ZIP Code" required style="padding:10px; border-radius:6px; border:1px solid #ddd;"></textarea>
+      
+      <div style="display:flex; gap:8px; align-items:center;">
+        <input id="shipping-cost" type="number" min="0" step="0.01" value="0.00" readonly style="padding:10px; border-radius:6px; border:1px solid #ddd; flex:1;">
+        <button id="calc-shipping" type="button" style="padding:10px 16px; background:#2196F3; color:white; border:none; border-radius:6px; cursor:pointer; white-space:nowrap;">Calculate Shipping</button>
+      </div>
+      <div style="font-size:0.9rem; color:#666; text-align:left;">
+        <strong>Shipping Origin:</strong> 214 Treemount Ln, Gaston, SC 29053
+      </div>
+    </form>
+    <div id="cart-total" style="margin:20px 0; font-weight:bold; font-size:1.3rem; color:#333; padding:16px; background:#f8f9fa; border-radius:8px;"></div>
+    
+    <h2>How would you like to pay?</h2>
+    <div style="display:flex; flex-direction:column; gap:24px; align-items:center; margin-top:32px;">
+      <button id="cashapp-checkout" style="padding:18px 32px; background:#00D632; color:white; border:none; border-radius:8px; font-size:1.2rem; font-weight:bold; cursor:pointer; width:100%; max-width:340px;">💰 Pay with Cash App</button>
+      <button id="paypal-checkout" style="padding:18px 32px; background:#003087; color:white; border:none; border-radius:8px; font-size:1.2rem; font-weight:bold; cursor:pointer; width:100%; max-width:340px;">Pay with PayPal</button>
+    </div>
+    <div style="margin-top:40px; color:#666; font-size:1rem;">After choosing, you'll be guided through payment and order confirmation.</div>
+    <a href="04-cart.html" style="display:inline-block; margin-top:32px; color:#2196F3; text-decoration:underline;">Back to Cart</a>
+  </main>
+  <script src="js-01-cart.js"></script>
+  <script src="js-02-cart-paypal.js"></script>
+  <script>
+    // Display cart total on checkout page
+    function displayCheckoutTotal() {
+      const cart = JSON.parse(localStorage.getItem('backcreek_cart') || '[]');
+      const totalEl = document.getElementById('cart-total');
+      if (!totalEl) return;
+      
+      if (cart.length === 0) {
+        totalEl.innerHTML = '<span style="color:#e74c3c;">Your cart is empty</span>';
+        return;
+      }
+      
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const shipping = parseFloat(document.getElementById('shipping-cost')?.value || 0);
+      const total = subtotal + shipping;
+      
+      totalEl.innerHTML = `
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+          <span>Subtotal (${cart.reduce((sum, i) => sum + i.qty, 0)} items):</span>
+          <span>$${subtotal.toFixed(2)}</span>
+        </div>
+        ${shipping > 0 ? `
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+          <span>Shipping:</span>
+          <span>$${shipping.toFixed(2)}</span>
+        </div>
+        <div style="border-top:2px solid #ddd; margin:8px 0; padding-top:8px; display:flex; justify-content:space-between;">
+          <span>Total:</span>
+          <span style="color:#4CAF50; font-size:1.4rem;">$${total.toFixed(2)}</span>
+        </div>
+        ` : `
+        <div style="border-top:2px solid #ddd; margin:8px 0; padding-top:8px; display:flex; justify-content:space-between;">
+          <span>Total:</span>
+          <span style="color:#4CAF50; font-size:1.4rem;">$${total.toFixed(2)}</span>
+        </div>
+        `}
+      `;
+    }
+    
+    // Update total when shipping changes
+    const shippingInput = document.getElementById('shipping-cost');
+    if (shippingInput) {
+      shippingInput.addEventListener('input', displayCheckoutTotal);
+    }
+    
+    // Initial display
+    displayCheckoutTotal();
+  </script>
+</body>
+</html>

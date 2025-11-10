@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Backcreek Designs — Status Email Composer</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 28px auto; padding: 0 16px; }
+    h1 { margin: 0 0 14px; }
+    .card { background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:18px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:14px; }
+    label { font-weight: 600; display:block; margin-bottom:6px; }
+    input, select, textarea { width:100%; padding:10px 12px; border:2px solid #ddd; border-radius:8px; font-size: 0.95rem; box-sizing: border-box; }
+    textarea { min-height: 120px; resize: vertical; }
+    .full { grid-column: 1 / -1; }
+    .row { margin-top: 16px; display:flex; gap:10px; flex-wrap:wrap; }
+    button { padding:12px 18px; border:0; border-radius:8px; background:#4CAF50; color:#fff; font-weight:600; cursor:pointer; }
+    button.secondary { background:#546e7a; }
+    .preview { margin-top: 20px; border:1px solid #ddd; border-radius:10px; padding:14px; background:#fafafa; }
+    .small { color:#666; font-size:0.85rem; }
+  </style>
+</head>
+<body>
+  <h1>Status Email Composer</h1>
+  <p class="small">Local tool — no backend. It builds a ready-to-send email and opens Gmail or your mail app with the content filled in.</p>
+
+  <div class="card" style="margin-bottom:24px;">
+    <h2 style="margin:0 0 12px; font-size:1.15rem;">Order Lookup</h2>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end;">
+      <div style="flex:1 1 200px;">
+        <label style="margin-bottom:6px;">Enter Order ID</label>
+        <input id="lookupOrderId" type="text" placeholder="BC-..." />
+      </div>
+      <div style="flex:1 1 160px;">
+        <label style="margin-bottom:6px;">or Customer Email</label>
+        <input id="lookupEmail" type="email" placeholder="customer@example.com" />
+      </div>
+      <button type="button" onclick="lookupOrder()" style="height:44px;">Load Order</button>
+      <button type="button" class="secondary" onclick="clearLookup()" style="height:44px;">Clear</button>
+    </div>
+    <div id="lookupResult" style="margin-top:14px; font-size:0.9rem; color:#333;"></div>
+    <div id="pastPurchases" style="margin-top:16px; font-size:0.85rem; color:#222;"></div>
+  </div>
+
+  <div class="card">
+    <div class="grid">
+      <div>
+        <label>Recipient Email *</label>
+        <input id="email" type="email" placeholder="customer@example.com" required />
+      </div>
+      <div>
+        <label>Customer Name</label>
+        <input id="name" type="text" placeholder="(optional)" />
+      </div>
+      <div>
+        <label>Order ID</label>
+        <input id="orderId" type="text" placeholder="ORD-20251107-1234" />
+      </div>
+      <div>
+        <label>Email Type *</label>
+        <select id="template">
+          <option>Status Update</option>
+          <option>Order Confirmation</option>
+          <option>Shipping Notice</option>
+          <option>Delay Notice</option>
+          <option>Payment Reminder</option>
+          <option>Custom Message</option>
+        </select>
+      </div>
+      <div>
+        <label>Status (for Status Update)</label>
+        <select id="status">
+          <option>Pending</option>
+          <option>Printing</option>
+          <option>In Production</option>
+          <option>Quality Check</option>
+          <option>Shipped</option>
+          <option>Completed</option>
+          <option>On Hold</option>
+          <option>Cancelled</option>
+        </select>
+      </div>
+      <div>
+        <label>Tracking Number (for Shipped)</label>
+        <input id="tracking" type="text" placeholder="9400..." />
+      </div>
+      <div>
+        <label>Product</label>
+        <input id="product" type="text" placeholder="Optional" />
+      </div>
+      <div>
+        <label>Quantity</label>
+        <input id="qty" type="number" min="1" step="1" />
+      </div>
+      <div>
+        <label>Price</label>
+        <input id="price" type="text" placeholder="$15.99" />
+      </div>
+      <div class="full">
+        <label>Notes / Custom Message</label>
+        <textarea id="notes" placeholder="Extra info, delays, care instructions, etc."></textarea>
+      </div>
+      <div class="full">
+        <label>Custom Subject (optional)</label>
+        <input id="subject" type="text" placeholder="Leave blank to auto-generate" />
+      </div>
+    </div>
+
+    <div class="row">
+      <button onclick="openGmail()">Open in Gmail</button>
+      <button class="secondary" onclick="openMailto()" type="button">Open Mail App</button>
+      <button class="secondary" onclick="copyText()" type="button">Copy Email Text</button>
+    </div>
+
+    <div class="preview" id="preview"></div>
+  </div>
+
+  <script>
+    const BRAND = 'Backcreek Designs';
+
+    // If you don't configure these, the Send Direct button will show a notice.
+
+    function buildEmail() {
+      const data = {
+        email: v('email'),
+        name: v('name') || 'Customer',
+        orderId: v('orderId') || '(no ID)',
+        template: v('template') || 'Status Update',
+        status: v('status') || 'Pending',
+        tracking: v('tracking'),
+        product: v('product'),
+        qty: v('qty'),
+        price: v('price'),
+        notes: v('notes'),
+        subject: v('subject')
+      };
+
+      // Choose subject + intro
+      let subject = data.subject && data.subject.trim();
+      let header = 'Order Update';
+      let intro = '';
+      if (data.template === 'Order Confirmation') {
+        header = 'Order Confirmation';
+        subject = subject || `${BRAND}: Order Received (${data.orderId})`;
+        intro = `Thanks, ${data.name}! We received your order.`;
+      } else if (data.template === 'Shipping Notice') {
+        header = 'Shipping Update';
+        subject = subject || `${BRAND}: Order ${data.orderId} Shipped`;
+        intro = data.tracking ? `Good news! Your order has shipped. Tracking: ${escapeHtml(data.tracking)}` : 'Good news! Your order has shipped.';
+      } else if (data.template === 'Delay Notice') {
+        header = 'Order Delay';
+        subject = subject || `${BRAND}: Order ${data.orderId} Delay Update`;
+        intro = `We wanted to let you know there is a delay with your order.`;
+      } else if (data.template === 'Payment Reminder') {
+        header = 'Payment Reminder';
+        subject = subject || `${BRAND}: Payment Reminder for Order ${data.orderId}`;
+        intro = `This is a friendly reminder about your order.${data.price? ' Amount due: ' + data.price + '.':''}`;
+      } else if (data.template === 'Custom Message') {
+        header = 'Message from ' + BRAND;
+        subject = subject || `${BRAND}: Message about Order ${data.orderId}`;
+        intro = data.notes || 'Hello!';
+      } else {
+        // Status Update
+        const map = {
+          'Pending': "We've received your order and will begin processing it soon.",
+          'Printing': 'Your order is now in the printing queue.',
+          'In Production': 'Your order is being produced.',
+          'Quality Check': "We're inspecting your order to make sure it looks great.",
+          'Shipped': data.tracking ? `Good news! Your order has shipped. Tracking: ${escapeHtml(data.tracking)}` : 'Good news! Your order has shipped.',
+          'Completed': 'Your order is complete. Thanks for choosing us!',
+          'On Hold': "Your order is currently on hold. We'll follow up with details.",
+          'Cancelled': 'Your order was cancelled. Contact us if this is unexpected.'
+        };
+        subject = subject || `${BRAND}: Order ${data.orderId} Status — ${data.status}`;
+        intro = map[data.status] || `Status updated to: ${data.status}`;
+      }
+
+      const bodyText = (
+        `Hi ${data.name},\n\n` +
+        `${intro}\n\n` +
+        `Order ID: ${data.orderId}` +
+        (data.product? `\nProduct: ${data.product}` : '') +
+        (data.qty? `\nQuantity: ${data.qty}` : '') +
+        (data.price? `\nPrice: ${data.price}` : '') +
+        (data.tracking? `\nTracking: ${data.tracking}` : '') +
+        (data.template !== 'Custom Message' && data.notes? `\n\nNotes:\n${data.notes}` : '') +
+        `\n\n- ${BRAND}`
+      );
+
+      const bodyHtml = (
+        `<div style="font-family:Arial,sans-serif;line-height:1.6;color:#222">`+
+        `<h2 style="margin:0 0 8px;">${escapeHtml(header)}</h2>`+
+        `<p style="margin:0 0 12px;">Hi ${escapeHtml(data.name)},</p>`+
+        `<p style="margin:0 0 12px;">${escapeHtml(intro)}</p>`+
+        `<div style="margin:12px 0;padding:12px;background:#f7f7f7;border-radius:8px;">`+
+        `<p style="margin:0 0 6px;"><strong>Order ID:</strong> ${escapeHtml(data.orderId)}</p>`+
+        (data.product? `<p style=\"margin:0 0 6px;\"><strong>Product:</strong> ${escapeHtml(data.product)}</p>`:'')+
+        (data.qty? `<p style=\"margin:0 0 6px;\"><strong>Quantity:</strong> ${escapeHtml(data.qty)}</p>`:'')+
+        (data.price? `<p style=\"margin:0 0 6px;\"><strong>Price:</strong> ${escapeHtml(data.price)}</p>`:'')+
+        (data.tracking? `<p style=\"margin:0 0 6px;\"><strong>Tracking:</strong> ${escapeHtml(data.tracking)}</p>`:'')+
+        `</div>`+
+        (data.template !== 'Custom Message' && data.notes? `<p style=\"margin:12px 0;\"><strong>Notes:</strong><br>${escapeHtml(data.notes).replace(/\n/g,'<br>')}</p>`:'')+
+        `<p style="margin:16px 0 0;">- ${BRAND}</p>`+
+        `</div>`
+      );
+
+      return { subject, bodyText, bodyHtml, to: data.email };
+    }
+
+    function openGmail(){
+      const {subject, bodyText, to} = buildEmail();
+      if(!to){ alert('Enter recipient email'); return; }
+      const url = 'https://mail.google.com/mail/?view=cm&fs=1' +
+                  '&to=' + encodeURIComponent(to) +
+                  '&su=' + encodeURIComponent(subject) +
+                  '&body=' + encodeURIComponent(bodyText);
+      window.open(url, '_blank');
+      updatePreview();
+    }
+
+    function openMailto(){
+      const {subject, bodyText, to} = buildEmail();
+      if(!to){ alert('Enter recipient email'); return; }
+      const url = 'mailto:' + encodeURIComponent(to) +
+                  '?subject=' + encodeURIComponent(subject) +
+                  '&body=' + encodeURIComponent(bodyText);
+      window.location.href = url;
+      updatePreview();
+    }
+
+    // (Removed direct send feature)
+
+    function copyText(){
+      const {subject, bodyText} = buildEmail();
+      const txt = `Subject: ${subject}\n\n${bodyText}`;
+      navigator.clipboard.writeText(txt).then(()=>{
+        alert('Email text copied to clipboard');
+      });
+      updatePreview();
+    }
+
+    function updatePreview(){
+      const {subject, bodyHtml} = buildEmail();
+      document.getElementById('preview').innerHTML = `<strong>Subject:</strong> ${escapeHtml(subject)}<hr>${bodyHtml}`;
+    }
+
+    function v(id){ return document.getElementById(id).value.trim(); }
+    function escapeHtml(str){ return String(str||'').replace(/[&<>"']/g, s=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[s])); }
+
+    document.querySelectorAll('input,select,textarea').forEach(el=>{
+      el.addEventListener('input', ()=> setTimeout(updatePreview, 10));
+      el.addEventListener('change', ()=> setTimeout(updatePreview, 10));
+    });
+    updatePreview();
+  // Cleanup: direct send removed
+
+    // ================= ORDER LOOKUP FUNCTIONS =================
+    function lookupOrder(){
+      const id = v('lookupOrderId');
+      const email = v('lookupEmail');
+      const history = JSON.parse(localStorage.getItem('backcreek_orders')||'[]');
+      if(!id && !email){
+        showLookupMsg('Enter an Order ID or Email to search.');
+        return;
+      }
+      let matches = history.filter(o => (id && o.orderId===id) || (email && o.customerEmail===email));
+      if(matches.length===0){
+        showLookupMsg('No orders found for that input.');
+        return;
+      }
+      // If multiple and specific ID given, reduce to that one
+      let order = id ? matches.find(o=>o.orderId===id) : matches[matches.length-1]; // latest for email
+      if(!order){
+        showLookupMsg('Order not found.');
+        return;
+      }
+      // Populate fields
+      setVal('email', order.customerEmail);
+      setVal('name', order.customerName);
+      setVal('orderId', order.orderId);
+      // Combine products
+      const productList = order.items.map(i => `${i.name} x${i.qty}`).join(', ');
+      setVal('product', productList);
+      // Aggregate quantity
+      const totalQty = order.items.reduce((s,i)=>s+(i.qty||1),0);
+      setVal('qty', totalQty);
+      // If prices exist, sum
+      const totalPrice = order.items.reduce((s,i)=> s + (Number(i.price)||0),0);
+      if(totalPrice>0) setVal('price', '$'+totalPrice.toFixed(2));
+      // tracking if present in order object
+      if(order.tracking) setVal('tracking', order.tracking);
+      updatePreview();
+      showLookupMsg(`Loaded order ${order.orderId}. (${order.items.length} item${order.items.length!==1?'s':''})`);
+      // Past purchases list
+      const sameEmail = history.filter(o=>o.customerEmail===order.customerEmail).sort((a,b)=> a.submittedAt.localeCompare(b.submittedAt));
+      renderPastPurchases(sameEmail, order.orderId);
+    }
+    function clearLookup(){
+      setVal('lookupOrderId','');
+      setVal('lookupEmail','');
+      document.getElementById('lookupResult').innerHTML='';
+      document.getElementById('pastPurchases').innerHTML='';
+    }
+    function showLookupMsg(msg){
+      document.getElementById('lookupResult').innerHTML = `<span style="color:#555;">${escapeHtml(msg)}</span>`;
+    }
+    function renderPastPurchases(list, currentId){
+      if(list.length<=1){
+        document.getElementById('pastPurchases').innerHTML = '';
+        return;
+      }
+      const rows = list.map(o=>{
+        const active = o.orderId===currentId;
+        const date = o.submittedAt ? new Date(o.submittedAt).toLocaleString() : '';
+        const count = o.items.length;
+        return `<tr style="background:${active?'#e8f5e9':'#fafafa'}"><td style="padding:6px 10px; font-weight:${active?'600':'500'};">${escapeHtml(o.orderId)}</td><td style="padding:6px 10px;">${escapeHtml(date)}</td><td style="padding:6px 10px;">${count} item${count!==1?'s':''}</td></tr>`;
+      }).join('');
+      document.getElementById('pastPurchases').innerHTML = `<div style="margin-top:6px; font-weight:600;">Past Purchases (${list.length-1} previous)</div><table style="border-collapse:collapse; width:100%; margin-top:4px; font-size:0.75rem;">${rows}</table>`;
+    }
+    function setVal(id,val){ const el=document.getElementById(id); if(el) el.value=val; }
+  </script>
+</body>
+</html>
